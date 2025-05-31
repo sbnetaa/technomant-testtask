@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
-import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
@@ -66,9 +65,6 @@ public class JwtService {
                 .getPayload();
     }
     private SecretKey getSignInKey() {
-//        return Jwts.SIG.HS256.key().build();
-//        byte[] keyBytes = secretKey.getBytes(StandardCharsets.UTF_8);
-//        return Keys.hmacShaKeyFor(keyBytes);
         byte[] encodeKey = Base64.getDecoder().decode(secretKey);
         return Keys.hmacShaKeyFor(encodeKey);
     }

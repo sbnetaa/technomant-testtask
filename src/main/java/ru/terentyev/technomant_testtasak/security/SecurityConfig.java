@@ -22,10 +22,6 @@ public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthFilter;
 
-//    public SecurityConfig(JwtAuthenticationFilter jwtAuthFilter) {
-//        this.jwtAuthFilter = jwtAuthFilter;
-//    }
-
     public SecurityConfig(JwtAuthenticationFilter jwtAuthFilter) {
         this.jwtAuthFilter = jwtAuthFilter;
     }
@@ -45,18 +41,10 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
-
-//    @Bean
-//    public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
-//        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
-//        provider.setPasswordEncoder(passwordEncoder);
-//        return provider;
-//    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {

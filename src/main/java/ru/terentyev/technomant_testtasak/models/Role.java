@@ -1,6 +1,6 @@
 package ru.terentyev.technomant_testtasak.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
